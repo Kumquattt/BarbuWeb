@@ -1,0 +1,10 @@
+
+<div *ngIf="logsService.messages.length">
+    
+    ______________________
+    <h2>LOGS</h2>
+    <button class="clear"
+            (click)="logsService.clear()">Clear messages</button>
+    <div *ngFor='let message of logsService.messages.reverse()'> {{message}} </div>
+  
+</div>

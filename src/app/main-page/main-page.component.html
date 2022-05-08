@@ -1,0 +1,29 @@
+
+<table>
+
+    <tr>
+        <td></td>
+        <td>SCORES</td>
+        <td>Total</td>
+        <td *ngFor="let game of this.statusService.games"> <!-- ngFor each  turn -->
+            <select #games (change)="dropdownChange(game.id, games.value)">
+                <option *ngFor="let gameNameConst of GAMES_ID"> {{gameNameConst}} </option>
+            </select>
+            {{game.id}}
+        </td>
+    </tr>
+
+    <tr *ngFor="let player of this.statusService.players">
+        <td><input type="radio" name="currentPlayer" (change)="radioChange(player.id)"></td><!-- décideur actuel -->
+        <td><input [(ngModel)]="player.name" (change)="playerNameInputChange(player)"></td>
+        <td>{{this.statusService.sumScore(player.id)}}</td>
+        <td *ngFor="let game of this.statusService.games">
+            <!-- {{game.scores[player.id]}} -->
+            <input type="number" [(ngModel)]="player.scores[game.id-1]">
+        </td>
+
+    </tr>
+
+</table>
+
+<!-- Notes: liste dynamique dans le dropdown via ngModel https://www.tektutorialshub.com/angular/select-options-example-in-angular/ -->
