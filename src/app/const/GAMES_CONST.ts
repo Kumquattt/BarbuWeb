@@ -2,9 +2,9 @@ export const GAMES_ID: string[] = [" ", "B", "C", "D","P", "R"]
 
 export enum GAMES_NAMES {
     'B' = 'Barbu',
-    'C' = "Coeurs",
-    'D' = "Dames",
-    'P' = "Plis",
+    'C' = "Coeur",
+    'D' = "Dame",
+    'P' = "Pli",
     'R' = "Réussite",
-    ' ' = ""
+    'NONE' = ""
 }

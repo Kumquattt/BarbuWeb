@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td></td>
+    <td>SCORES</td>
+    <td>Total</td>
+    <td *ngFor="let game of this.columns">
+      <select #games>
+        <option *ngFor="let gameNameConst of GAMES_NAMES">
+          {{ gameNameConst }}
+        </option>
+      </select>
+      {{ game.id }}
+    </td>
+  </tr>
+
+  <tr *ngFor="let player of this.players">
+    <td><input type="radio" name="currentPlayer" /></td>
+    <td><input [(ngModel)]="player.name" /></td>
+    <td>{{ player.totalScore }}</td>
+    <td *ngFor="let game of player.games">
+      <input type="number" [(ngModel)]="game.type.number" />
+    </td>
+  </tr>
+</table>

@@ -1,11 +1,17 @@
-
 <table>
-
     <tr>
         <td></td>
         <td>SCORES</td>
         <td>Total</td>
         <td *ngFor="let game of this.statusService.games"> <!-- ngFor each  turn -->
+            <!-- <mat-form-field appearance="fill">
+                <mat-select>
+                    <mat-option *ngFor="let gameNameConst of GAMES_ID" value="{{gameNameConst}}">  
+                        {{gameNameConst}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
             <select #games (change)="dropdownChange(game.id, games.value)">
                 <option *ngFor="let gameNameConst of GAMES_ID"> {{gameNameConst}} </option>
             </select>

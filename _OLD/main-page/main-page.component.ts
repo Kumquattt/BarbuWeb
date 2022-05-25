@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ScoreTable } from '../interfaces/score-table';
-import { GAMES_ID } from '../const/games';
-import { LogsService } from '../services/logs.service';
-import { Player } from '../interfaces/player';
-import { Game } from '../interfaces/game';
-import { StatusService } from '../services/status.service';
+import { ScoreTable } from '../../Barbu/src/app/interfaces/score-table';
+import { GAMES_ID } from '../../Barbu/src/app/const/GAMES_CONST';
+import { LogsService } from '../../Barbu/src/app/services/logs.service';
+import { Player } from '../../Barbu/src/app/interfaces/player';
+import { Game } from '../../Barbu/src/app/interfaces/game';
+import { StatusService } from '../status.service';
 
 @Component({
   selector: 'app-main-page',

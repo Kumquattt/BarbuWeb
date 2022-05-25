@@ -4,22 +4,28 @@ import { FormsModule } from '@angular/forms'; //inclut ngModel - penser à l'ajo
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { LogsComponent } from './logs/logs.component';
-import { BandeauStatutComponent } from './bandeau-statut/bandeau-statut.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+import { MtxGridModule } from '@ng-matero/extensions/grid';
+import { GamePageComponent } from './game-page/game-page.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
     LogsComponent,
-    BandeauStatutComponent,
+    GamePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatSelectModule,
+    MtxGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

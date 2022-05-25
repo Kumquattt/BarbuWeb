@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GAMES_NAMES } from '../const/games';
-import { Game } from '../interfaces/game';
-import { StatusService } from '../services/status.service';
+import { GAMES_NAMES } from '../../Barbu/src/app/const/GAMES_CONST';
+import { Game } from '../../Barbu/src/app/interfaces/game';
+import { StatusService } from '../status.service';
 
 @Component({
   selector: 'app-bandeau-statut',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Game } from '../interfaces/game';
-import { Player } from '../interfaces/player';
-import { LogsService } from './logs.service';
+import { Game } from '../Barbu/src/app/interfaces/game';
+import { Player } from '../Barbu/src/app/interfaces/player';
+import { LogsService } from '../Barbu/src/app/services/logs.service';
 
 @Injectable({
   providedIn: 'root'
