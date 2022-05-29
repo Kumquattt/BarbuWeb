@@ -1,18 +1,7 @@
-import { GAMES_NAMES } from "../const/GAMES_CONST";
-import { Game } from "./game";
-import { Player } from "./player";
-
 export class GameType {
 
     name: string
-    number: number = 0 // de trucs pris ? TODO trouver un meilleur nom
-    possibleNumbers: number[] = []
-    //score: number = 0
 
-  constructor(name: string) {
-    this.name = name
-    this.possibleNumbers = this.getPossibleNumbers()
-  }
 
   // TODO : replace the switches !! > surcharge
   getPossibleNumbers(): number[] {
@@ -30,25 +19,26 @@ export class GameType {
     return []
   }
 
-  getScore(): number {
+  getScore(number: number): number {
     switch(this.name) {
-      case "Barbu" :  return this.number > 0 ? -40 : 0
-      case "Dame" :  return this.number * -20
-      case "Pli" :  return this.number * -10
-      case "Coeur" :  return this.number * -10
-      case "Réussite" : return this.number > 0 ? 100 / this.number : 0 
-      default: return 0
+      case "Barbu" :  return number > 0 ? -40 : 0
+      case "Dame" :  return number * -20
+      case "Pli" :  return number * -10
+      case "Coeur" :  return number * -10
+      case "Réussite" : return number > 0 ? 100 / number : 0 
+      default: console.log("error !"); return 0
     } 
   }
 
 
+  constructor(name: string) {
+    this.name = name
+  }
 }
 
 // export class GameBarbu extends Gamename {
 //     constructor(name: GAMES_NAMES, number: number) { super(name, number)}
-    
 //     override getScore(): number {
 //         return this.number > 0 ? -40 : 0
 //     }
-
 // }

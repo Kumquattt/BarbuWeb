@@ -4,27 +4,28 @@
     <td></td>
     <td>SCORES</td>
     <td>Total</td>
-    <td *ngFor="let game of this.players[0].games">
+    <td *ngFor="let game of this.games">
       <mat-form-field>
-        <mat-select [(ngModel)]="game.selected" name="game.index"
-            (selectionChange)="updateGameType(game.index, this.players)"> <!-- [(ngModel)]="game.type.name" -->
+        <mat-select [(ngModel)]="game.type.name" name="game.index"> <!-- (selectionChange)="updateGameType(game.index, this.players)" -->
           <mat-option *ngFor="let gameNameConst of GAMES_NAMES" [value]="gameNameConst"> <!-- [(value)]="game.type.name"-->
             {{ gameNameConst }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </td>
+    <td>
+      <button (click)="addNewGame(this.games)"><mat-icon>add</mat-icon></button>
+    </td>
   </tr>
 
   <tr *ngFor="let player of this.players">
     <td><button (click)="removePlayer(player, this.players)"><mat-icon>clear</mat-icon></button></td>
-    <!-- <td><input type="radio" name="currentPlayer" /></td> -->
     <td><input [(ngModel)]="player.name"/></td>
-    <td>{{ player.getTotalScore() }}</td>
-    <td *ngFor="let game of player.games">
+    <td>{{ player.getTotalScore(this.games) }}</td>
+    <td *ngFor="let game of games">
       <mat-form-field>
-        <mat-select [(ngModel)]="game.type.number" name="game.index + game.type.name">
-          <mat-option *ngFor="let number of game.type.possibleNumbers" [value]="number">
+        <mat-select (selectionChange)="updateScore(player, game, $event.value)" name="game.index + game.type.name">
+          <mat-option *ngFor="let number of game.type.getPossibleNumbers()" [value]="number">
             {{ number }}
           </mat-option>
         </mat-select>

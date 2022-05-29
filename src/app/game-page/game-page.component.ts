@@ -12,45 +12,34 @@ import { Player } from '../interfaces/player';
 })
 export class GamePageComponent implements OnInit {
 
-  //GAMES_NAMES: GAMES_NAMES[] = Object.values(GAMES_NAMES);
   GAMES_NAMES = GAMES_NAMES
   players: Player[] = []
-  selected = ""
+  games: Game[] = []
 
   constructor() {}
 
   ngOnInit(): void {
     this.addNewPlayer(this.players)
-    console.log(JSON.stringify(this.players))
-    //this.games.push(new Game(0, 0, new GameType(GAMES_NAMES.NONE, 0)));
-  }
-
-  // playerInputChange(player : Player) : void {
-  //   if (player.isLast(this.players)) {
-  //     this.addNewPlayer(this.players)
-  //   }
-  // }
-
-
-  updateGameType(index: number, players: Player[]) : void {
-    console.log("selected = " + this.selected + " , i=" + index)
-    players.forEach(p => p.games[index].type = new GameType(p.games[index].selected))
-    if (players[0].games[index].isLast(players[0].games)) {
-      this.addNewGame(index, players)
-    }
+    this.addNewGame(this.games)
   }
   
   addNewPlayer(players: Player[]) : void {
     const lastId : number = players.length > 0 ? players[players.length - 1].id : 0
-    players.push(
-      new Player(lastId + 1, '', [
-        new Game(0, 0, new GameType("NONE")),
-      ])
-    );
+    players.push(new Player(lastId + 1));
   }
 
-  addNewGame(index: number, players: Player[]) : void {
-    players.forEach(p => p.games.push(new Game(index + 1, 0, new GameType("NONE"))))
+  addNewGame(games: Game[]) : void {
+    const lastId : number = games.length > 0 ? games[games.length - 1].index : 0
+    games.push(new Game(lastId + 1, 0, new GameType('NONE')))
+  }
+
+  updateGameType(index: number, type: string, games: Game[]) : void {
+    games[index].type = new GameType(type)
+    games[index].scores.clear //check if working
+  }
+
+  updateScore(player: Player, game: Game, score: number) : void {
+    game.scores.set(player.id, game.getScore(score)) // nec check ifPresent ?
   }
 
   removePlayer(player: Player, players: Player[]) : void {
@@ -58,4 +47,5 @@ export class GamePageComponent implements OnInit {
   }
 
   ngOnChange(): void {}
+
 }

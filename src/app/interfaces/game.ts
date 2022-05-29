@@ -1,17 +1,14 @@
 import { GameType } from "./gameType"
-import { Player } from "./player"
 
 export class Game {
     index: number
-    decider: number //Player
+    decider: number //Player index
     type: GameType
+    scores: Map<number, number> = new Map //playerIndex, score
 
-    selected: string = "" //temp
-
-
-    // playerId: number, //id of the player choosing games
-    // playerName: string,
-    // type: string
+    getScore(number: number) {
+      return this.type.getScore(number)
+    }
 
     isLast(games: Game[]): boolean {
       return this.index == games[games.length - 1].index
@@ -20,7 +17,7 @@ export class Game {
 
   constructor(
     index: number, 
-    decider: number, //Player, 
+    decider: number,
     type: GameType
 ) {
     this.index = index
