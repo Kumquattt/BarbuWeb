@@ -6,11 +6,16 @@ export class Game {
     decider: number //Player
     type: GameType
 
+    selected: string = "" //temp
 
 
     // playerId: number, //id of the player choosing games
     // playerName: string,
     // type: string
+
+    isLast(games: Game[]): boolean {
+      return this.index == games[games.length - 1].index
+    }
 
 
   constructor(
